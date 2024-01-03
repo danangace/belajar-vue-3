@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Declarative Rendering</title>
+</head>
+<body>
+  <div id="app">
+    <button id="counter-btn" @click="btnClicked">Counter {{ count }}</button>
+  </div>
+</body>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+  const { createApp, ref } = Vue
+  const vueApplication = Vue.createApp({
+    setup () {
+      let count = ref(0)
+
+      function btnClicked () {
+        count.value += 1
+      }
+
+      return {
+        count,
+        btnClicked
+      }
+    }
+  })
+
+  vueApplication.mount('#app')
+</script>
+</html>
